@@ -1,16 +1,22 @@
 import { Router } from 'express';
-import * as Controller from '../controller/index.controller';
+import * as Controller from '../controller/commentary.controller';
 
 const router = Router();
 
 router.route("/")
-.get(Controller.getAll)
-.post(Controller.post)
-.delete(Controller.deleteAll);
+.post(Controller.postCommentary)
+.delete(Controller.deleteCommentaries);
 
 router.route("/:id")
-.get(Controller.getByID)
-.put(Controller.put)
-.delete(Controller.deleteByID);
+.put(Controller.putCommentary)
+.delete(Controller.deleteCommentary);
+
+router.route("/recipe/:recipe")
+.get(Controller.getCommentaryByRecipe)
+.delete(Controller.deleteCommentaryByRecipe);
+
+router.route("/user/:user")
+.get(Controller.getComentaryByUser)
+.delete(Controller.deleteCommentaryByUser);
 
 export default router;
