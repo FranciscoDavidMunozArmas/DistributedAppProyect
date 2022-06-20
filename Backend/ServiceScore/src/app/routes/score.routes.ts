@@ -8,7 +8,4 @@ router.route("/recipe/:recipe")
 .post(Controller.postScore)
 .delete(Controller.deleteScore);
 
-router.route("/recipe/:recipe/user/:user")
-.put(Controller.putRecipe)
-
 export default router;
