@@ -2,6 +2,31 @@ import { Request, Response } from 'express';
 import { ResponseStatusCode, ResponseStatusMessages } from '../../config/status';
 import scoreSchema from '../schemas/score.schema';
 
+export const getScores = async (req: Request, res: Response) => {
+    try {
+        const scoresData = await scoreSchema.find({});
+        const scores = scoresData.map(score => {
+            const scoreArray = score.scores.map(data => data.score);
+            return {
+                recipe: score.recipe,
+                score: scoreArray.reduce((prev, curr) => prev + curr)/scoreArray.length
+            };
+        });
+        return res.status(ResponseStatusCode.OK).json({
+            status: ResponseStatusCode.OK,
+            message: "Score found",
+            data: {
+                scores: scores
+            }
+        });
+    } catch (error: any) {
+        return res.status(ResponseStatusCode.INTERNAL_SERVER_ERROR).json({
+            message: ResponseStatusMessages.ERROR,
+            error: error.message
+        });
+    }
+}
+
 export const getScore = async (req: Request, res: Response) => {
     try {
         const { recipe } = req.params;
