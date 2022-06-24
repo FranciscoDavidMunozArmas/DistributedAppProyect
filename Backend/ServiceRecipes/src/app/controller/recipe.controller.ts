@@ -119,7 +119,8 @@ export const deleteID = async (req: Request, res: Response) => {
 export const getAuthorID = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const recipes = await recipeShema.find({ author: id });
+        const data = await recipeShema.find();
+        const recipes = data.filter(recipe => recipe.author.toString() === id);
         if (!recipes) {
             return res.status(ResponseStatusCode.NOT_FOUND).json({
                 status: ResponseStatusMessages.ERROR,

@@ -4,13 +4,12 @@ import * as Controller from '../controller/recipe.controller';
 const router = Router();
 
 router.route("/")
-.get(Controller.getAll)
-.post(Controller.post)
-.delete(Controller.deleteAll);
+.get(Controller.getRecipes);
 
-router.route("/:id")
-.get(Controller.getByID)
-.put(Controller.put)
-.delete(Controller.deleteByID);
+router.route("/recipe/:id")
+.get(Controller.getID);
+
+router.route("/recipe/author/:id")
+.get(Controller.getAuthorID);
 
 export default router;

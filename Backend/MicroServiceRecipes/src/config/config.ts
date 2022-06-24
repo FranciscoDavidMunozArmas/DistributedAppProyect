@@ -7,5 +7,8 @@ export default {
     MONGO_HOST: process.env.MONGO_HOST,
     MONGO_USER: process.env.MONGO_USER,
     MONGO_PASSWORD: process.env.MONGO_PASSWORD,
-    PORT: process.env.PORT || 3000
+    PORT: process.env.PORT || 3000,
+    SERVICE_USER: process.env.SERVICE_USER || "",
+    SERVICE_RECIPE: process.env.SERVICE_RECIPE || "",
+    SERVICE_SCORE: process.env.SERVICE_SCORE || "",
 }
