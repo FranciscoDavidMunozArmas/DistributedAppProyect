@@ -161,3 +161,27 @@ export const deleteAuthorID = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const getCategory = async (req: Request, res: Response) => {
+    try {
+        const { category } = req.params;
+        const data = await recipeShema.find();
+        const recipes = data.filter(recipe => recipe.category.toString() === category.toString());
+        if (!recipes) {
+            return res.status(ResponseStatusCode.NOT_FOUND).json({
+                status: ResponseStatusMessages.ERROR,
+                message: 'Recipes not found'
+            });
+        }
+        return res.status(ResponseStatusCode.OK).json({
+            status: ResponseStatusMessages.SUCCESS,
+            message: 'Recipes retrieved successfully',
+            data: recipes
+        });
+    } catch (error: any) {
+        return res.status(ResponseStatusCode.INTERNAL_SERVER_ERROR).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
