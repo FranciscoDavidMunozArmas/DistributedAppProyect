@@ -36,9 +36,25 @@ export const getTopRecipes = async (req: Request, res: Response) => {
 
 export const getTopCategory = async (req: Request, res: Response) => {
     const { category } = req.params;
-    const max = (req.params.max) ? req.params.max : 10;
+    const max = (req.params.max) ? Number.parseInt(req.params.max) : 10;
     try {
-        return res.status(ResponseStatusCode.OK).json({ message: "Post" });
+        const recipes = sliceArray(await retriveRecipeCategory(category), max);
+        const scores: any[] = [];
+        const authors: any[] = [];
+
+        for(const recipe of recipes) {
+            scores.push(retriveScoreRecipe(recipe._id));
+        }
+
+        for (const recipe of recipes) {
+            authors.push(await retriveAuthor(recipe.author));
+        }
+
+        return res.status(ResponseStatusCode.OK).json({
+            status: ResponseStatusMessages.SUCCESS,
+            message: "Top retrived",
+            data: createTOP(recipes, authors, scores)
+        });
     } catch (error: any) {
         return res.status(ResponseStatusCode.INTERNAL_SERVER_ERROR).json({
             message: ResponseStatusMessages.ERROR,
@@ -53,8 +69,19 @@ const retriveScore = async () => {
     return retrivedScores.scores;
 }
 
+const retriveScoreRecipe = async (id: string) => {
+    const recipes = await axios.get(`${SERVICES.SCORE}/recipes/${id}`);
+    const retrivedScores = recipes.data.data;
+    return retrivedScores.scores;
+}
+
 const retriveRecipe = async (id: string) => {
     const recipe = await axios.get(`${SERVICES.RECIPE}/recipe/${id}`);
+    return recipe.data.data;
+}
+
+const retriveRecipeCategory = async (category: string) => {
+    const recipe = await axios.get(`${SERVICES.RECIPE}/recipe/category/${category}`);
     return recipe.data.data;
 }
 
