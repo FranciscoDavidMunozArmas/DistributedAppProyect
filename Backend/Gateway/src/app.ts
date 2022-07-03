@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import config from './config/config';
 
-import indexRouter from './app/routes/index.routes';
+import indexRouter from './app/router/router';
 
 const app = express();
 
@@ -14,10 +14,10 @@ app.set("port", config.PORT);
 //middlewares
 app.use(cors());
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended:false }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //routes
-app.use(indexRouter);
+app.use(`/${config.PREFIX}/v${config.VERSION}`, indexRouter);
 
 export default app;

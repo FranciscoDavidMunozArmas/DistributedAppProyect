@@ -3,9 +3,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
-    MONGO_NAME: process.env.MONGO_NAME,
-    MONGO_HOST: process.env.MONGO_HOST,
-    MONGO_USER: process.env.MONGO_USER,
-    MONGO_PASSWORD: process.env.MONGO_PASSWORD,
+    PREFIX: process.env.PREFIX || '',
+    VERSION: process.env.VERSION || '',
+    SERVICE_USER: process.env.SERVICE_USER || '',
+    SERVICE_RECIPE: process.env.SERVICE_RECIPE || '',
+    SERVICE_COMMENTARY: process.env.SERVICE_COMMENTARY || '',
+    SERVICE_SCORE: process.env.SERVICE_SCORE || '',
+    SERVICE_TOP: process.env.SERVICE_TOP || '',
+    SERVICE_FULL_RECIPE: process.env.SERVICE_FULL_RECIPE || '',
     PORT: process.env.PORT || 3000
 }
