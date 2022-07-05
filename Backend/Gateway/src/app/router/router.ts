@@ -5,7 +5,7 @@ import UserServiceRouter from '../services/user.router';
 import ScoreServiceRouter from '../services/score.router';
 import TopServiceRouter from '../services/top.router';
 import RecipeServiceRouter from '../services/recipe.router';
-
+import SearchServiceRouter from '../services/search.router';
 
 const router = Router();
 
@@ -19,5 +19,6 @@ router.use('/users', UserServiceRouter);
 router.use('/scores', ScoreServiceRouter);
 router.use('/top', TopServiceRouter);
 router.use('/recipes', RecipeServiceRouter);
+router.use('/search', SearchServiceRouter);
 
 export default router;

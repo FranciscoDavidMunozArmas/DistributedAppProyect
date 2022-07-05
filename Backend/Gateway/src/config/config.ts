@@ -11,5 +11,6 @@ export default {
     SERVICE_SCORE: process.env.SERVICE_SCORE || '',
     SERVICE_TOP: process.env.SERVICE_TOP || '',
     SERVICE_FULL_RECIPE: process.env.SERVICE_FULL_RECIPE || '',
+    SERVICE_SEARCH_ENGINE: process.env.SERVICE_SEARCH_ENGINE || '',
     PORT: process.env.PORT || 3000
 }
