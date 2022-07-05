@@ -119,7 +119,8 @@ export const deleteID = async (req: Request, res: Response) => {
 export const getAuthorID = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const recipes = await recipeShema.find({ author: id });
+        const data = await recipeShema.find();
+        const recipes = data.filter(recipe => recipe.author.toString() === id);
         if (!recipes) {
             return res.status(ResponseStatusCode.NOT_FOUND).json({
                 status: ResponseStatusMessages.ERROR,
@@ -152,6 +153,30 @@ export const deleteAuthorID = async (req: Request, res: Response) => {
         return res.status(ResponseStatusCode.OK).json({
             status: ResponseStatusMessages.SUCCESS,
             message: 'Recipe deleted successfully'
+        });
+    } catch (error: any) {
+        return res.status(ResponseStatusCode.INTERNAL_SERVER_ERROR).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}
+
+export const getCategory = async (req: Request, res: Response) => {
+    try {
+        const { category } = req.params;
+        const data = await recipeShema.find();
+        const recipes = data.filter(recipe => recipe.category.toString() === category.toString());
+        if (!recipes) {
+            return res.status(ResponseStatusCode.NOT_FOUND).json({
+                status: ResponseStatusMessages.ERROR,
+                message: 'Recipes not found'
+            });
+        }
+        return res.status(ResponseStatusCode.OK).json({
+            status: ResponseStatusMessages.SUCCESS,
+            message: 'Recipes retrieved successfully',
+            data: recipes
         });
     } catch (error: any) {
         return res.status(ResponseStatusCode.INTERNAL_SERVER_ERROR).json({

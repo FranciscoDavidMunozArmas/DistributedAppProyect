@@ -17,4 +17,7 @@ router.route("/recipe/author/:id")
 .get(Controller.getAuthorID)
 .delete(Controller.deleteAuthorID);
 
+router.route("/recipe/category/:category")
+.get(Controller.getCategory)
+
 export default router;

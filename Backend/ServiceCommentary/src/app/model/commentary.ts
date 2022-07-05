@@ -1,7 +1,9 @@
-export interface Commentary {
-    _id?:string,
-    user:any,
-    recipe:any,
-    comment:string,
-    date: Date
+import { Document } from "mongoose";
+
+export interface Commentary extends Document {
+    _id?: string;
+    user: string;
+    recipe: string;
+    comment: string;
+    date: Date;
 }
