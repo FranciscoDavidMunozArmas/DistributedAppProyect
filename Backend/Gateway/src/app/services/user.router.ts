@@ -26,8 +26,8 @@ router.route("/email/:email")
     .then(data => res.send(data.data))
     .catch(err => res.send(err));
 })
-.post((req, res) => {
-    api.post(req.path, req.body)
+.put((req, res) => {
+    api.put(req.path, req.body)
     .then(data => res.send(data.data))
     .catch(err => res.send(err));
 })

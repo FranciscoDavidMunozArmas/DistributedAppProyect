@@ -11,7 +11,7 @@ router.route("/:id")
 
 router.route("/email/:email")
 .get(Controller.getEmail)
-.post(Controller.put)
+.put(Controller.put)
 .delete(Controller.deleteEmail);
 
 router.route("/username/:username")
