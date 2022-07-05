@@ -4,7 +4,7 @@ import cors from 'cors';
 
 import config from './config/config';
 
-import indexRouter from './app/routes/index.routes';
+import indexRouter from './app/routes/commentary.routes';
 
 const app = express();
 
@@ -18,6 +18,6 @@ app.use(express.urlencoded({ extended:false }));
 app.use(express.json());
 
 //routes
-app.use("/", indexRouter);
+app.use("/commentaries", indexRouter);
 
 export default app;
