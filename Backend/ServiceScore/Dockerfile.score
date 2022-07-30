@@ -1,0 +1,24 @@
+FROM node:12-alpine
+
+ENV MONGO_NAME=recipe-app
+ENV MONGO_HOST=cluster0.1anvu.mongodb.net
+ENV MONGO_USER=admin
+ENV MONGO_PASSWORD=12345
+ENV PORT=8084
+
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+WORKDIR /home/node/app
+
+COPY package*.json ./
+
+RUN npm config set unsafe-perm true
+
+RUN npm install -g typescript
+RUN npm install -g ts-node
+USER node
+RUN npm install
+
+COPY --chown=node:node . .
+RUN npm run build
+
+CMD [ "npm", "start" ]
