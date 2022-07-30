@@ -76,3 +76,19 @@ La base de la URL es: `host:port/api/v1`
 ### _Motor de busqueda_
 - GET `/search/recipe/name/:name`
 - GET `/search/recipe/author/:author`
+
+# Servicio en Docker
+Para correr el servicio, asegurese de que tenga instalado docker y docker-compose.
+
+### Ejecucion
+Dentro de la presente ubicacion, abre una terminal y ejecute el siguiente comando:
+
+```docker-compose build```
+
+Este con el fin de construir las imagenes del servicio.
+
+```docker-compose up -d```
+
+Este comando inicia el servicio.
+
+Con ello, puede dirigirse a la ruta del gateway para probar el servicio.

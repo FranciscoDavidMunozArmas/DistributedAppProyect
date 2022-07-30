@@ -19,8 +19,6 @@ services:
     build:
       context: ./MicroServiceRecipes
       dockerfile: Dockerfile.full_recipes
-    ports:
-      - "8086:8086"
 
   search_engine_service:
     restart: always
@@ -29,8 +27,6 @@ services:
     build:
       context: ./SearchEngine
       dockerfile: Dockerfile.search_engine
-    ports:
-      - "8087:8087"
 
   commentary_service:
     restart: always
@@ -39,8 +35,6 @@ services:
     build:
       context: ./ServiceCommentary
       dockerfile: Dockerfile.commentary
-    ports:
-      - "8083:8083"
 
   recipes_service:
     restart: always
@@ -49,8 +43,6 @@ services:
     build:
       context: ./ServiceRecipes
       dockerfile: Dockerfile.recipes
-    ports:
-      - "8082:8082"
 
   score_service:
     restart: always
@@ -59,8 +51,6 @@ services:
     build:
       context: ./ServiceScore
       dockerfile: Dockerfile.score
-    ports:
-      - "8084:8084"
 
   top_service:
     restart: always
@@ -69,8 +59,6 @@ services:
     build:
       context: ./ServiceTop
       dockerfile: Dockerfile.top
-    ports:
-      - "8085:8085"
 
   user_service:
     restart: always
@@ -79,8 +67,6 @@ services:
     build:
       context: ./ServiceUser
       dockerfile: Dockerfile.user
-    ports:
-      - "8081:8081"
 
 networks:
   backend:
