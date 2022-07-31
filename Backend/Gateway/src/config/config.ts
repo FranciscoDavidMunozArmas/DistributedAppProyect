@@ -13,5 +13,6 @@ export default {
     SERVICE_FULL_RECIPE: process.env.SERVICE_FULL_RECIPE || '',
     SERVICE_SEARCH_ENGINE: process.env.SERVICE_SEARCH_ENGINE || '',
     SERVICE_FAVOURITES: process.env.SERVICE_FAVOURITES || '',
+    SERVICE_CALENDAR: process.env.SERVICE_CALENDAR || '',
     PORT: process.env.PORT || 3000
 }

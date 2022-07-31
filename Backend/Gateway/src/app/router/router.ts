@@ -7,6 +7,7 @@ import TopServiceRouter from '../services/top.router';
 import RecipeServiceRouter from '../services/recipe.router';
 import SearchServiceRouter from '../services/search.router';
 import FavouriteServiceRouter from '../services/favourite.router';
+import CalendarServiceRouter from '../services/calendar.router';
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.use('/top', TopServiceRouter);
 router.use('/recipes', RecipeServiceRouter);
 router.use('/search', SearchServiceRouter);
 router.use('/favourites', FavouriteServiceRouter);
+router.use('/calendar', CalendarServiceRouter);
 
 export default router;

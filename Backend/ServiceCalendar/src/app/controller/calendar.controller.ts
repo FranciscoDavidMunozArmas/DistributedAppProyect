@@ -162,7 +162,8 @@ export const deleteCalendar = async (req: Request, res: Response) => {
 
 export const getCalendarByDay = async (req: Request, res: Response) => {
     try {
-        const { user, day } = req.params;
+        const { user } = req.params;
+        const { day } = req.body;
         const calendar = await calendarShema.findOne({ user });
         if (!calendar) {
             return res.status(ResponseStatusCode.NOT_FOUND).json({
@@ -198,7 +199,8 @@ export const getCalendarByDay = async (req: Request, res: Response) => {
 
 export const getCalendarByDate = async (req: Request, res: Response) => {
     try {
-        const { user, startdate, enddate } = req.params;
+        const { user } = req.params;
+        const { startdate, enddate } = req.body;
         const calendar = await calendarShema.findOne({ user });
         if (!calendar) {
             return res.status(ResponseStatusCode.NOT_FOUND).json({
