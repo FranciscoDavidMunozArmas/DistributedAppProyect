@@ -67,6 +67,22 @@ services:
       context: ./ServiceUser
       dockerfile: Dockerfile.user
 
+  favourites_service:
+    restart: always
+    networks:
+     - backend
+    build:
+      context: ./ServiceFavourites
+      dockerfile: Dockerfile.favourite
+
+  calendar_service:
+    restart: always
+    networks:
+      - backend
+    build:
+      context: ./ServiceCalendar
+      dockerfile: Dockerfile.calendar
+
 networks:
   backend:
     driver: bridge

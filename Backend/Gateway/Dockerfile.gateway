@@ -10,6 +10,8 @@ ENV SERVICE_SCORE=http://score_service:8084/scores
 ENV SERVICE_TOP=http://top_service:8085/top
 ENV SERVICE_FULL_RECIPE=http://full_recipes_service:8086/recipes
 ENV SERVICE_SEARCH_ENGINE=http://search_engine_service:8087/search_engine
+ENV SERVICE_FAVOURITES=http://localhost:8088/favourites
+ENV SERVICE_CALENDAR=http://localhost:8089/calendar
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app
