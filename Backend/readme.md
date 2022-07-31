@@ -77,6 +77,72 @@ La base de la URL es: `host:port/api/v1`
 - GET `/search/recipe/name/:name`
 - GET `/search/recipe/author/:author`
 
+### _Recetas Favoritas_
+- GET `/favorites/:user`
+- POST `/favorites/:user`
+- DELETE `/favorites/:user/:recipe`
+
+### _Calendario_
+- GET `/calendar/:user`
+- POST `/calendar/:user`
+- DELETE `/calendar/:user`
+- PUT `/calendar/:user/:calendar`
+- DELETE `/calendar/:user/:calendar`
+- POST `/calendar/:user/day`
+- POST `/calendar/:user/interval`
+
+## Formato de envio de datos
+### _Comentarios_
+```
+{
+    "commentary": String -> Comentario,
+    "recipe": String -> ID de la receta,
+    "user": String -> ID del usuario
+}
+```
+### _Usuarios_
+```
+{
+    "email": String -> Correo electronico,
+    "username": String -> Nombre de usuario
+}
+```
+### _Calificacion de las recetas_
+```
+{
+    "recipe": String -> ID de la receta,
+    "user": String -> ID del usuario que califica,
+    "score": Number -> Calificacion de la receta
+}
+```
+### _Recetas_
+```
+{
+    "title": String -> Nombre de la receta,
+    "image": Imagen -> Imagen de la receta,
+    "category": String -> Categoria de la receta,
+    "time": Number -> Tiempo de preparacion de la receta,
+    "ingredients": String[] -> Ingredientes de la receta,
+    "steps": String[] -> Pasos de la receta,
+    "author": String -> ID del autor de la receta,
+    "description": String -> Descripcion de la receta/opcional,
+    "calories": Number -> Calorias de la receta/opcional,
+}
+```
+### _Recetas Favoritas_
+```
+{
+    "recipe": String -> ID de la receta
+}
+```
+### _Calendario_
+```
+{
+    "date": String -> Fecha de la receta,
+    "recipe": String -> ID de la receta
+}
+```
+
 # Servicio en Docker
 Para correr el servicio, asegurese de que tenga instalado docker y docker-compose.
 
