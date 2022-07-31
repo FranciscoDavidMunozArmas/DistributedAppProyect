@@ -4,10 +4,9 @@ ENV MONGO_NAME=recipe-app
 ENV MONGO_HOST=cluster0.1anvu.mongodb.net
 ENV MONGO_USER=admin
 ENV MONGO_PASSWORD=12345
-ENV PORT=8085
-ENV URL_SERVICE_SCORE=http://score_service:8084/scores
-ENV URL_SERVICE_RECIPE=http://recipes_service:8082/recipes
-ENV URL_SERVICE_USER=http://user_service:8081/users
+ENV PORT=8088
+ENV SERVICE_USER=http://localhost:8081/users
+ENV SERVICE_FULL_RECIPE=http://localhost:8086/recipes
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app

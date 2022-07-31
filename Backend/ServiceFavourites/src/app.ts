@@ -18,6 +18,6 @@ app.use(express.urlencoded({ extended:false }));
 app.use(express.json());
 
 //routes
-app.use("/", favouriteRouter);
+app.use("/favourites", favouriteRouter);
 
 export default app;

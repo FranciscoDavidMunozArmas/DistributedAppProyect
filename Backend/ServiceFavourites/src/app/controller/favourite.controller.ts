@@ -8,11 +8,18 @@ export const saveFavourite = async (req: Request, res: Response) => {
     try {
         const { user } = req.params;
         const { recipe } = req.body;
-        const favouriteData = favouriteSchema.findOne({ user });
+        const favouriteData = await favouriteSchema.findOne({ user });
         if (!favouriteData) {
             await createNewFavourite(user, recipe);
         } else {
-            await setNewFavourite(user, recipe);
+            if (!favouriteData.recipes.includes(recipe)) {
+                await setNewFavourite(user, recipe);
+            } else {
+                return res.status(ResponseStatusCode.OK).json({
+                    status: ResponseStatusCode.OK,
+                    message: "Recipe already in favourite"
+                });
+            }
         }
         return res.status(ResponseStatusCode.OK).json({
             status: ResponseStatusCode.OK,

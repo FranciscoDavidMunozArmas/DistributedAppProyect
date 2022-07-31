@@ -5,9 +5,9 @@ const router = Router();
 
 router.route("/:user")
 .post(Controller.saveFavourite)
+.get(Controller.getFavourites);
 
 router.route("/:user/:recipe")
-.get(Controller.getFavourites)
 .delete(Controller.removeFavourite);
 
 export default router;
