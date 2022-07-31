@@ -4,7 +4,7 @@ ENV MONGO_NAME=recipe-app
 ENV MONGO_HOST=cluster0.1anvu.mongodb.net
 ENV MONGO_USER=admin
 ENV MONGO_PASSWORD=12345
-ENV PORT=8088
+ENV PORT=8089
 ENV SERVICE_USER=http://localhost:8081/users
 ENV SERVICE_FULL_RECIPE=http://localhost:8086/recipes
 
