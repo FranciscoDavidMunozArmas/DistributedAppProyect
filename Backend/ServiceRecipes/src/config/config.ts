@@ -8,5 +8,6 @@ export default {
     MONGO_USER: process.env.MONGO_USER,
     MONGO_PASSWORD: process.env.MONGO_PASSWORD,
     URI_USER: process.env.URI_USER || '',
-    PORT: process.env.PORT || 3000
+    PORT: process.env.PORT || 3000,
+    IMAGE_FOLDER: process.env.IMAGE_FOLDER || '',
 }

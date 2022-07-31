@@ -22,6 +22,7 @@ export const getAll = async (req: Request, res: Response) => {
 export const post = async (req: Request, res: Response) => {
     try {
         const data: Recipe = req.body;
+        data.image = (req.file) ? req.file.path : "";
         const recipe = await recipeShema.create(data);
         return res.status(ResponseStatusCode.CREATED).json({
             status: ResponseStatusMessages.SUCCESS,
@@ -54,7 +55,7 @@ export const deleteAll = async (req: Request, res: Response) => {
 export const getID = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const recipe = await recipeShema.findById(id).populate('user');
+        const recipe = await recipeShema.findById(id);
         return res.status(ResponseStatusCode.OK).json({
             status: ResponseStatusMessages.SUCCESS,
             message: 'Recipe retrieved successfully',
@@ -72,14 +73,15 @@ export const putID = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const data: Recipe = req.body;
-        const oldRecipe = await recipeShema.findById(id).populate('user');
+        const oldRecipe = await recipeShema.findById(id);
         if (!oldRecipe) {
             return res.status(ResponseStatusCode.NOT_FOUND).json({
                 status: ResponseStatusMessages.ERROR,
                 message: 'Recipe not found'
             });
         }
-        const recipe = await recipeShema.findByIdAndUpdate(id, data, { new: true }).populate('user');
+        data.image = (req.file) ? req.file.path : "";
+        const recipe = await recipeShema.findByIdAndUpdate(id, data, { new: true });
         return res.status(ResponseStatusCode.OK).json({
             status: ResponseStatusMessages.SUCCESS,
             message: 'Recipe updated successfully',
