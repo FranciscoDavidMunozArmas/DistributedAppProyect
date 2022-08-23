@@ -5,4 +5,5 @@ export const ConstantsVaraibles = {
     STORAGE_BUCKET: process.env.REACT_APP_STORAGE_BUCKET || "",
     MESSAGING_SENDER_ID: process.env.REACT_APP_MESSAGING_SENDER_ID || "",
     APP_ID: process.env.REACT_APP_APP_ID || "",
+    API_GATEWAY: process.env.REACT_APP_API_GATEWAY || "http://localhost:8090"
 }

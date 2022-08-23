@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-//import ReactDOM from "react-dom";
-import imageFood from "./assets/food.png";
-import "./styles.css";
+import imageFood from "../assets/food.png";
+import "../styles.css";
 
 function Login() {
   // React States

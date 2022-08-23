@@ -9,19 +9,19 @@ import "./styles.css";
 export default App; */
 
 import { useState } from "react";
-import Modal from "./Recipe";
-import Ingredient from "./Ingredient";
+import Modal from "./components/Recipe";
+import Ingredient from "./components/Ingredient";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Modal open={isOpen} close={() => setIsOpen(false)}>
-        <Ingredient></Ingredient>
-      </Modal>
+        <Ingredient> </Ingredient>{" "}
+      </Modal>{" "}
       <div className="button-container">
-        <button onClick={() => setIsOpen(true)}>Open</button>
-      </div>
+        <button onClick={() => setIsOpen(true)}> Open </button>{" "}
+      </div>{" "}
     </>
   );
 }

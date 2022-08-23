@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
-import "./styles.css";
-import imageSample from "./assets/sample.png";
+import "../styles.css";
+import imageSample from "../assets/sample.png";
 
 class Ingredient extends Component {
     constructor(props){
