@@ -11,17 +11,17 @@ function Login() {
   const database = [
     {
       username: "user1",
-      password: "pass1"
+      password: "pass1",
     },
     {
       username: "user2",
-      password: "pass2"
-    }
+      password: "pass2",
+    },
   ];
 
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
   };
 
   const handleSubmit = (event) => {
@@ -50,42 +50,47 @@ function Login() {
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
+      <div className="error"> {errorMessages.message} </div>
     );
 
   // JSX code for login form
   const renderForm = (
     <div className="row mt-5">
       <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className = "image-class"> 
-          <img src = {imageFood} alt = ""/>
-        </div>
-        <div className="input-container-form">
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
-        </div>
-        <div className="button-container">
-          <input type="submit" value = "Login"/>
-        </div>
-        </div>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit}>
+          <div className="image-class">
+            <img src={imageFood} alt="" />
+          </div>{" "}
+          <div className="input-container-form">
+            <div className="input-container">
+              <label> Username </label>{" "}
+              <input type="text" name="uname" required />{" "}
+              {renderErrorMessage("uname")}{" "}
+            </div>{" "}
+            <div className="input-container">
+              <label> Password </label>{" "}
+              <input type="password" name="pass" required />{" "}
+              {renderErrorMessage("pass")}{" "}
+            </div>{" "}
+            <div className="button-container">
+              <input type="submit" value="Login" />
+            </div>{" "}
+          </div>{" "}
+        </form>{" "}
+      </div>{" "}
     </div>
   );
 
   return (
     <div className="app">
       <div className="login-form">
-        {isSubmitted ? <div>El usuario ingreso correctamente</div> : renderForm}
-      </div>
+        {" "}
+        {isSubmitted ? (
+          <div> El usuario ingreso correctamente </div>
+        ) : (
+          renderForm
+        )}{" "}
+      </div>{" "}
     </div>
   );
 }
